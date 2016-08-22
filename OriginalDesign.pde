@@ -16,10 +16,11 @@ class Strings{
 	void display(){
 		line(0, yPos, fret*50, yPos);
  		bezier(fret*50, yPos, fret*50+((width-fret*50)*0.5), yPos+velocity,fret*50+((width-fret*50)*0.5), yPos+velocity, width, yPos);
- 		velocity=velocity*-0.93;
+ 		velocity=velocity*-0.9;
 	}
-	void update(float newV){
-		velocity=newV;
+	void update(){
+		if (abs(mouseY-yPos)<abs(mouseV)){
+		velocity=mouseV*0.5;}
 	}
 }
 Strings[] instrument= new Strings[6];
@@ -54,8 +55,8 @@ void draw()
   	
   	for (int i=0; i<instrument.length; i++){
   		instrument[i].display();
-  		if (abs(mouseV)>10){
-  		instrument[i].update(mouseV*0.5);
+  		if (abs(mouseV)>7){
+  		instrument[i].update();
   		}
   	}
 }
