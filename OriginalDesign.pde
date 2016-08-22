@@ -29,8 +29,8 @@ void setup()
 	for (int i=0; i<instrument.length; i++){
 		instrument[i] = new Strings(i*50+80, i);
 	}
-  size(1600,800);
-  rectMode(CENTER);
+  size(1400,400);
+  
 }
 void getMouseV(){
 	//int dX=(oldMX-mouseX);
@@ -49,14 +49,24 @@ void draw()
 	ellipse(mouseX, mouseY, (100-mouseV)*0.5, (100-mouseV)*0.5);
 	println(mouseV);
 	//
+	noStroke();
+	fill(127, 127, 127, 50);
+	rect(0, 0, 800, 500);
+
 	stroke(156);
 	strokeWeight(3);
 	noFill();
-  	
+	//
+  	for (int i=0; i<8; i++){							//draws the frets
+  		fill(200);
+  		line(i*100, 0, i*100, 800);
+  	}
+  	//
   	for (int i=0; i<instrument.length; i++){
+  		
   		instrument[i].display();
-  		if (abs(mouseV)>7){
-  		instrument[i].update();
+  		if (abs(mouseV)>5 && mouseX>700){
+  			instrument[i].update();
   		}
   	}
 }
