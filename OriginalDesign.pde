@@ -1,7 +1,8 @@
 float mouseV;
 int oldMX; //the mouse coords from before
 int oldMY;
-float rootPitch = 164.8;
+float rootPitch = 329.63;
+float halfStepRatio = 1/1.059463094359295264561825294946341700779204317494185628559;
 class Strings{
 	int fret;
 	float velocity;
@@ -27,12 +28,20 @@ class Strings{
 	}
 }
 Strings[] instrument= new Strings[6];
+
 void setup()
-{
+{	
 	for (int i=0; i<instrument.length; i++){
-		instrument[i] = new Strings(i*50+80, rootPitch*pow(1/0.70710678, i));
-		println(instrument[i].sound);
-	}
+		if (i==0){
+			instrument[i] = new Strings(i*50+80, rootPitch);
+		}
+		else if (i==2){
+			instrument[i] = new Strings(i*50+80, instrument[1].sound*pow(halfStepRatio, 4));
+			println(pow(halfStepRatio, 1));
+		}
+		else{
+			instrument[i] = new Strings(i*50+80, instrument[i-1].sound*pow(halfStepRatio, 5));
+		}} 				//creates each string
   size(1400,400);
   textSize(20);
   noCursor();
