@@ -81,12 +81,12 @@ void draw()
   		}
   	}
 }
-
+/*
 void mousePressed(){
-	//println(get(mouseX, mouseY));
 	if (get(mouseX, mouseY)== -4614272){
-		println((mouseY+80)/50-1);
+		println(round((mouseY-25)/50));
 		println((mouseX-20)/100);
 	}
 
 }
+*/
