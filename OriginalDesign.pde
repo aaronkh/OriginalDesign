@@ -3,18 +3,18 @@ int oldMX; //the mouse coords from before
 int oldMY;
 float rootPitch = 329.63;
 float halfStepRatio = 1/1.059463094359295264561825294946341700779204317494185628559;
-class Strings{
+class notStrings{
 	int fret;
 	float velocity;
 	int yPos;
 	float sound;
-	Strings(int y, float pitch){
+	notStrings(int y, float pitch){
 		fret=0;
 		velocity=0;
 		yPos=y;
 		sound=pitch;
 	}
-	void display(){
+	void notdisplay(){
 		stroke(127);
 		line(0, yPos, fret*50, yPos);
  		bezier(fret*50, yPos, fret*50+((width-fret*50)*0.5), yPos+velocity,fret*50+((width-fret*50)*0.5), yPos+velocity, width, yPos);
@@ -22,29 +22,28 @@ class Strings{
  		fill(100);
  		text(String.format("%.2f",sound)+" Hz", 5, yPos-5);
 	}
-	void update(){
+	void notupdate(float n){
 		if (abs(mouseY-yPos)<abs(mouseV)){
-		velocity=mouseV*0.5;}
+		velocity=n*0.5;}
 	}
 }
-Strings[] instrument= new Strings[6];
+notStrings[] instrument= new notStrings[6];
 
 void setup()
 {	
 	for (int i=0; i<instrument.length; i++){
 		if (i==0){
-			instrument[i] = new Strings(i*50+80, rootPitch);
+			instrument[i] = new notStrings(i*50+80, rootPitch);
 		}
 		else if (i==2){
-			instrument[i] = new Strings(i*50+80, instrument[1].sound*pow(halfStepRatio, 4));
-			println(pow(halfStepRatio, 1));
+			instrument[i] = new notStrings(i*50+80, instrument[1].sound*pow(halfStepRatio, 4));
 		}
 		else{
-			instrument[i] = new Strings(i*50+80, instrument[i-1].sound*pow(halfStepRatio, 5));
+			instrument[i] = new notStrings(i*50+80, instrument[i-1].sound*pow(halfStepRatio, 5));
 		}} 				//creates each string
   size(1400,400);
   textSize(20);
-  noCursor();
+
 }
 void getMouseV(){
 	//int dX=(oldMX-mouseX);
@@ -62,8 +61,6 @@ void draw()
 	fill(159,89,39, 150);
 	noStroke();
 	ellipse(mouseX, mouseY, (75-mouseV*3)*0.5, (75-mouseV*3)*0.5);
-	//println(mouseV);
-	//
 	noStroke();
 	fill(127, 127, 127, 50);
 	rect(0, 0, 800, 500);
@@ -78,18 +75,18 @@ void draw()
   	}
   	//
   	for (int i=0; i<instrument.length; i++){
-  		instrument[i].display();
+  		instrument[i].notdisplay();
   		if (abs(mouseV)>5){
-  			instrument[i].update();
+  			instrument[i].notupdate(mouseV);
   		}
   	}
 }
 
 void mousePressed(){
-	println(get(mouseX, mouseY));
+	//println(get(mouseX, mouseY));
 	if (get(mouseX, mouseY)== -4614272){
-		rect(mouseX, mouseY, 200, 200);
+		println((mouseY+80)/50-1);
+		println((mouseX-20)/100);
 	}
 
 }
-
