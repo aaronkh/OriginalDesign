@@ -30,7 +30,7 @@ class notStrings{
  		bezier(fret*50, yPos, fret*50+((width-fret*50)*0.5), yPos+velocity,fret*50+((width-fret*50)*0.5), yPos+velocity, width, yPos);
  		velocity=velocity*-0.9;
  		fill(100);
- 		text(String.format("%.2f",sound)+" Hz", 5, yPos-5);
+ 		text(round(sound)+" Hz", 5, yPos-5);
 	}
 	void notupdate(float n){
 		if (abs(mouseY-yPos)<abs(mouseV)){
