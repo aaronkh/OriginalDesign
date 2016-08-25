@@ -3,6 +3,16 @@ int oldMX; //the mouse coords from before
 int oldMY;
 float rootPitch = 329.63;
 float halfStepRatio = 1/1.059463094359295264561825294946341700779204317494185628559;
+
+void getMouseV(){
+	//int dX=(oldMX-mouseX);
+	//oldMX=mouseX;
+	int dY=(oldMY-mouseY)*-1;
+	oldMY=mouseY;
+	//mouseV=sqrt(sq(dX)+sq(dY))*2;
+	mouseV=dY;
+}
+
 class notStrings{
 	int fret;
 	float velocity;
@@ -45,14 +55,7 @@ void setup()
   textSize(20);
 
 }
-void getMouseV(){
-	//int dX=(oldMX-mouseX);
-	//oldMX=mouseX;
-	int dY=(oldMY-mouseY)*-1;
-	oldMY=mouseY;
-	//mouseV=sqrt(sq(dX)+sq(dY))*2;
-	mouseV=dY;
-}
+
 void draw()
 {
 	background(256, 256, 256);
@@ -81,6 +84,7 @@ void draw()
   		}
   	}
 }
+
 /*
 void mousePressed(){
 	if (get(mouseX, mouseY)== -4614272){
