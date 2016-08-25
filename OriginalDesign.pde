@@ -28,7 +28,7 @@ class notStrings{
 		stroke(127);
 		line(0, yPos, fret*50, yPos);
  		bezier(fret*50, yPos, fret*50+((width-fret*50)*0.5), yPos+velocity,fret*50+((width-fret*50)*0.5), yPos+velocity, width, yPos);
- 		velocity=velocity*-0.8;
+ 		velocity=velocity*-0.85;
  		fill(100);
  		text(round(sound)+" Hz", 5, yPos-5);
 	}
