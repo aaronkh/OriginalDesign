@@ -91,6 +91,6 @@ void mousePressed(){
 	
 		println(round((mouseY-25)/50));
 		println((mouseX-20)/100);
-	}*/
+	}
 
-}
+}*/
