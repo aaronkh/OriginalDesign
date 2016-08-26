@@ -58,6 +58,7 @@ void setup()
 		}} 				//creates each string
   size(1400,375);
   textSize(20);
+  noCursor();
 }
 
 void draw()
@@ -91,7 +92,7 @@ void draw()
   		if (abs(mouseV)>5){
   			instrument[i].update(mouseV);
   		}
-  		instrument[i].sound=instrument[i].baseSound+instrument[i].baseSound*pow(halfStepRatio, frets[i]);
+  		instrument[i].sound=instrument[i].baseSound*pow(1.059463094359295264561825294946341700779204317494185628559, frets[i]);
   	}
 }
 
