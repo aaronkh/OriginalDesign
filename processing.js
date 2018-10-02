@@ -26,6 +26,8 @@
     xhr.send(null);
     if (xhr.status !== 200 && xhr.status !== 0) throw "XMLHttpRequest failed, status code " + xhr.status;
     return xhr.responseText
+
+    
   };
   var isDOMPresent = "document" in this && !("fake" in this.document);
   document.head = document.head || document.getElementsByTagName("head")[0];
